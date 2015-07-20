@@ -77,7 +77,7 @@ public class ModelMax {
         sqlInsert.append(" insert into MAX");
         sqlInsert.append(" VALUES(");
         sqlInsert.append(" 1,");
-        sqlInsert.append(" 3");
+        sqlInsert.append(" 10");
         sqlInsert.append(" );");
         return sqlInsert.toString();
     }
