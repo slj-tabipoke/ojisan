@@ -61,10 +61,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        pid="211892"
+        pid="21189"
         mid="184633"
         sid="508532"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/startButton"
-        android:layout_alignStart="@+id/startButton" />
+        android:layout_alignStart="@+id/startButton"
+        android:clickable="true"
+        android:visibility="visible" />
 </RelativeLayout>

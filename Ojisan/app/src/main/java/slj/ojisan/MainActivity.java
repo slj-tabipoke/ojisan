@@ -35,11 +35,10 @@ import java.util.TimerTask;
 import jp.co.imobile.sdkads.android.FailNotificationReason;
 import jp.co.imobile.sdkads.android.ImobileSdkAd;
 import jp.co.imobile.sdkads.android.ImobileSdkAdListener;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.ViewGroup;
 
 public class MainActivity extends ActionBarActivity  {
-    static final String PUBLISHER_ID="211892";
+    static final String PUBLISHER_ID="21189";
     static final String MEDIA_ID="184633";
     static final String SPOT_ID="508532";
 
@@ -110,7 +109,8 @@ public class MainActivity extends ActionBarActivity  {
         //2.広告取得開始
         ImobileSdkAd.start(SPOT_ID);
         //3. 広告表示
-        ImobileSdkAd.showAd (this,SPOT_ID);
+        ImobileSdkAd.showAd(this, SPOT_ID);
+        ImobileSdkAd.showAd(this, SPOT_ID, 1749, 1749, true);
 
         this.setImageSwitchValue();  // イメージ切替値の設定
         this.setImageList();        // イメージリストの初期化
@@ -205,7 +205,7 @@ public class MainActivity extends ActionBarActivity  {
             @Override
             public void onClick(View v) {                      // ボタンをクリックした時に実行されるコード
                 imgInstance.setVisibility(View.VISIBLE);        // 画像の表示
-                MainActivity.user_click_counter  = 0;            // ユーザーがクリックした回数を初期化
+                MainActivity.user_click_counter = 0;            // ユーザーがクリックした回数を初期化
 
                 txtMsgInstance.setText("スタート!!");          // テキストメッセージの表示
                 txtMsgInstance.setVisibility(View.VISIBLE);    // スタート!!テキストを非表示にする。
@@ -214,8 +214,7 @@ public class MainActivity extends ActionBarActivity  {
                 iRevengeBtn.setVisibility(View.INVISIBLE);     //  リベンジボタンを非表示
             }
         });
-        //広告の取得
-        ImobileSdkAd.registerSpot(this, PUBLISHER_ID, MEDIA_ID, SPOT_ID);
+
         //スポットへのリスナーの設定
         ImobileSdkAd.setImobileSdkAdListener(SPOT_ID, new ImobileSdkAdListener() {
             @Override
@@ -287,7 +286,6 @@ public class MainActivity extends ActionBarActivity  {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // TODO 自動生成されたメソッド・スタブ
-
                         }
                     })
                     .show();
