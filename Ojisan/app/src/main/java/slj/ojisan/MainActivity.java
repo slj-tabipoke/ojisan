@@ -70,19 +70,32 @@ public class MainActivity extends ActionBarActivity  {
     // 補足: onCreate()で実行しないとまだactivityが初期化されていない為null poiner exceptionがでる。
     private void setImageSwitchValue()
     {
-        ModelMax max = new ModelMax(MainActivity.getInstance());            // DBからMAXを値を取得するクラスを初期化
-        MainActivity.imgage_switch_counter = Integer.valueOf(max.getMax());   // 画像切替数値を設定
+        //ModelMax max = new ModelMax(MainActivity.getInstance());            // DBからMAXを値を取得するクラスを初期化
+        MainActivity.imgage_switch_counter = 11;   // 画像切替数値を設定
     }
 
     // 切替画像リストの作成
     // 補足: onCreate()で実行しないとまだactivityが初期化されていない為null poiner exceptionがでる。
     private void setImageList()
     {
-        MainActivity.ImageList = new int[3];
+        MainActivity.ImageList = new int[16];
         // 画像のIDを全て配列に保存
         MainActivity.ImageList[0] = R.drawable.ojisan_1;
         MainActivity.ImageList[1] = R.drawable.ojisan_2;
         MainActivity.ImageList[2] = R.drawable.ojisan_3;
+        MainActivity.ImageList[3] = R.drawable.ojisan_4;
+        MainActivity.ImageList[4] = R.drawable.ojisan_5;
+        MainActivity.ImageList[5] = R.drawable.ojisan_6;
+        MainActivity.ImageList[6] = R.drawable.ojisan_7;
+        MainActivity.ImageList[7] = R.drawable.ojisan_8;
+        MainActivity.ImageList[8] = R.drawable.ojisan_9;
+        MainActivity.ImageList[9] = R.drawable.ojisan_10;
+        MainActivity.ImageList[10] = R.drawable.ojisan_11;
+        MainActivity.ImageList[11] = R.drawable.ojisan_12;
+        MainActivity.ImageList[12] = R.drawable.ojisan_13;
+        MainActivity.ImageList[13] = R.drawable.ojisan_14;
+        MainActivity.ImageList[14] = R.drawable.ojisan_15;
+        MainActivity.ImageList[15] = R.drawable.ojisan_16;
     }
 
     // 初期化メソッド
@@ -105,12 +118,12 @@ public class MainActivity extends ActionBarActivity  {
         setContentView(R.layout.activity_main);
 
         //1.広告スポットの登録
-        ImobileSdkAd.registerSpotFullScreen(MainActivity.this, PUBLISHER_ID, MEDIA_ID, SPOT_ID);
+        //ImobileSdkAd.registerSpotFullScreen(MainActivity.this, PUBLISHER_ID, MEDIA_ID, SPOT_ID);
         //2.広告取得開始
-        ImobileSdkAd.start(SPOT_ID);
+        //ImobileSdkAd.start(SPOT_ID);
         //3. 広告表示
-        ImobileSdkAd.showAd(this, SPOT_ID);
-        ImobileSdkAd.showAd(this, SPOT_ID, 1749, 1749, true);
+        //ImobileSdkAd.showAd(this, SPOT_ID);
+        //ImobileSdkAd.showAd(this, SPOT_ID, 1749, 1749, true);
 
         this.setImageSwitchValue();  // イメージ切替値の設定
         this.setImageList();        // イメージリストの初期化
@@ -152,6 +165,7 @@ public class MainActivity extends ActionBarActivity  {
                                 startTime = -1;
                                 txtTimeMsg.setVisibility(View.INVISIBLE);
                                 imgInstance.setVisibility(View.INVISIBLE);
+                                txtMsgInstance.setText("YOU LOST!!");          // テキストメッセージの表示
                                 MainActivity.user_click_counter = 0;
                                 iRevengeBtn.setVisibility(View.VISIBLE);       // リベンジボタンの表示
                             }
@@ -190,8 +204,9 @@ public class MainActivity extends ActionBarActivity  {
                     txtMsgInstance.setVisibility(View.VISIBLE);    // スタート!!テキストを非表示にする。
                     iRevengeBtn.setVisibility(View.VISIBLE);       // リベンジボタンの表示
                     this.counter = 0;                             // カウンターを0に
-
-                } else if (MainActivity.imgage_switch_counter == this.counter) {
+                    startTime = -1;
+                } else if (MainActivity.imgage_switch_counter == this.counter ) {
+                    MainActivity.imgage_switch_counter  = 5;
                     // 次の画像に切替
                     imgInstance.setImageResource(MainActivity.ImageList[MainActivity.user_click_counter]);
                     this.counter = 0;                 // カウンターを初期値に設定
